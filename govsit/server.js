@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 4000;
 const SECRET = "gov-secret-key";
 
 // 🔹 Base URL of course website (set COURSE_SITE_BASE env var in Vercel dashboard)
-const COURSE_SITE_BASE = process.env.COURSE_SITE_BASE || "http://127.0.0.1:5501/couressit";
+const COURSE_SITE_BASE = process.env.COURSE_SITE_BASE || "https://harish0921.github.io/Shanthi-it-solution-SIT-";
 
 // Short-lived one-time tickets used to open the course site.
 const courseTickets = new Map();
