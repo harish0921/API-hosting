@@ -4,6 +4,10 @@
         {
             "src": "govsit/server.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "govsit/public/**",
+            "use": "@vercel/static"
         }
     ],
     "rewrites": [
