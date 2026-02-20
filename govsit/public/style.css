@@ -1,0 +1,340 @@
+/* Google Font - Inter (Closest free alternative to San Francisco) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #f5f5f7;
+  --card-bg: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #0071e3;
+  /* Apple Blue */
+  --accent-hover: #0077ed;
+  --error-color: #ff3b30;
+  --success-color: #34c759;
+  --border-radius: 12px;
+  --input-bg: #f5f5f7;
+  /* Very light gray for inputs */
+  --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Center login, but dashboard will override this */
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  /* Apple navbar height */
+  background: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  /* Very subtle separator */
+}
+
+/* Navbar content container to max-width */
+.navbar-content {
+  width: 100%;
+  max-width: 980px;
+  padding: 0 22px;
+  display: flex;
+  justify-content: space-between;
+  /* Logo left, links right */
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span {
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  /* Dark gray */
+  text-decoration: none;
+  font-size: 0.8rem;
+  /* Small, elegant */
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+  /* Black on hover */
+}
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: 460px;
+  /* Slightly wider login card */
+  padding: 40px;
+  margin-top: 80px;
+  /* Space for navbar */
+  background: transparent;
+  /* No card background for login usually, or white */
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Dashboard specific container adjustments */
+body:has(.dashboard-mode) {
+  display: block;
+  /* Reset flex center for dashboard */
+}
+
+/* We can't rely on :has everywhere, so let's stick to .container logic */
+
+/* Headings */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  /* Tight typography */
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* Simple Login Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.input-group {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 18px 16px;
+  border-radius: var(--border-radius);
+  border: 1px solid #d2d2d7;
+  /* Apple border color */
+  background: white;
+  /* or clean white inputs */
+  font-size: 17px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+  /* Subtle blue glow ring */
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background-color: #e5e5e5;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Card Style (for Dashboard/Courses) */
+.card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 18px;
+  /* Larger radius */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 12px 24px rgba(0, 0, 0, 0.04);
+  /* Ultra subtle shadow */
+  margin-bottom: 24px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card h4 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Course List */
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-item span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Watch Button (Outline Style) */
+.watch-btn {
+  width: auto;
+  padding: 6px 16px;
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.watch-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Logout Button Link */
+.logout-btn-nav {
+  color: var(--error-color) !important;
+}
+
+.logout-btn-nav:hover {
+  text-decoration: underline;
+}
+
+/* Messages */
+.message {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  display: none;
+  text-align: center;
+}
+
+.message.error {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: var(--error-color);
+}
+
+.message.success {
+  background-color: rgba(52, 199, 89, 0.1);
+  color: var(--success-color);
+}
+
+/* Remove old background shapes if present in DOM (handled via display none) */
+.background-shapes {
+  display: none;
+}
+
+/* Dashboard layout helper */
+@media (min-width: 800px) {
+  .container {
+    /* On login, we want center. On dashboard, we might want wider. */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+/* PROFILE */
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  object-fit: cover;
+  margin-bottom: 10px;
+}

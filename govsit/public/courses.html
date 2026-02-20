@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - Government Portal</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="dashboard-mode">
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="navbar-content">
+
+    <a href="#" class="logo">
+      <i class="fas fa-university"></i> Gov<span>Portal</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html">Profile</a>
+      <a href="courses.html" class="active">Courses</a>
+      <a href="#" onclick="logout()" class="logout-btn-nav">Logout</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- MAIN -->
+<div class="container" style="max-width:850px; margin-top:100px;">
+
+  <!-- HEADER -->
+  <h2>Learning Programs</h2>
+  <p class="subtitle">
+    Improve your technical skills through certified training modules
+  </p>
+
+
+  <!-- USER STATUS -->
+  <div class="card" style="display:flex; justify-content:space-between; text-align:center;">
+
+    <div>
+      <h3>Level</h3>
+      <p class="subtitle">Intermediate</p>
+    </div>
+
+    <div>
+      <h3 style="color:var(--success-color);">Active</h3>
+      <p class="subtitle">Enrollment</p>
+    </div>
+
+    <div>
+      <h3>2026</h3>
+      <p class="subtitle">Batch</p>
+    </div>
+
+  </div>
+
+
+  <!-- COURSE LIST -->
+  <div class="card">
+
+    <h3><i class="fas fa-book"></i> Assigned Courses</h3>
+
+    <ul id="courseList">
+      <!-- Loaded from script.js -->
+    </ul>
+
+  </div>
+
+
+  <!-- BENEFITS -->
+  <div class="card">
+
+    <h3><i class="fas fa-award"></i> Program Benefits</h3>
+
+    <p>✔ Government Certified Training</p>
+    <p>✔ Practical Project Experience</p>
+    <p>✔ Industry Expert Sessions</p>
+    <p>✔ Job Placement Assistance</p>
+
+  </div>
+
+
+  <!-- GUIDELINES -->
+  <div class="card">
+
+    <h3><i class="fas fa-clipboard-list"></i> Learning Guidelines</h3>
+
+    <p>• Complete lessons regularly</p>
+    <p>• Maintain minimum 75% attendance</p>
+    <p>• Submit assignments on time</p>
+    <p>• Participate in assessments</p>
+
+  </div>
+
+
+  <!-- NOTICE -->
+  <div class="card" style="background-color: var(--input-bg); border:none;">
+
+    <h3 style="font-size:1rem;">
+      <i class="fas fa-info-circle"></i> Important Notice
+    </h3>
+
+    <p style="font-size:0.9rem;">
+      All courses must be completed before
+      <strong>30 April 2026</strong> to qualify for certification.
+    </p>
+
+  </div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container text-center">
+    <p>© 2026 Harish | All Rights Reserved</p>
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Government Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-content">
+      <a href="#" class="logo"><i class="fas fa-university"></i> Gov<span>Portal</span></a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Container -->
+  <div class="container">
+    <h2>Sign in</h2>
+    <p class="subtitle">to access your candidate dashboard</p>
+
+    <!-- Error/Success Message Box -->
+    <div id="messageBox" class="message"></div>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Username" required autocomplete="off">
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+
+      <button type="submit" id="loginBtn">Sign In</button>
+    </form>
+
+    <div class="card" style="margin-top: 40px; border: none; box-shadow: none; padding: 0;">
+      <h4 style="font-size: 0.9rem; color: var(--text-secondary);"><i class="fas fa-info-circle"></i> New Candidate?
+      </h4>
+      <p style="font-size: 0.85rem;">Registration is currently closed for the 2026 batch. Check back later.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+<footer>
+<div class="container text-center">
+<p>© 2026 Harish | All Rights Reserved</p>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
