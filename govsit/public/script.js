@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
 
-        const response = await fetch("http://localhost:4000/login", {
+        const response = await fetch("/login", {
 
           method: "POST",
 
@@ -150,7 +150,7 @@ async function watchCourse(courseName) {
 
   try {
 
-    const response = await fetch("http://localhost:4000/course-access", {
+    const response = await fetch("/course-access", {
 
       method: "POST",
 

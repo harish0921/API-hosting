@@ -11,11 +11,11 @@ app.use(cors());
 // 🔥 Serve frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const SECRET = "gov-secret-key";
 
-// 🔹 Base URL of course website
-const COURSE_SITE_BASE = "http://127.0.0.1:5501/couressit";
+// 🔹 Base URL of course website (set COURSE_SITE_BASE env var in Vercel dashboard)
+const COURSE_SITE_BASE = process.env.COURSE_SITE_BASE || "http://127.0.0.1:5501/couressit";
 
 // Short-lived one-time tickets used to open the course site.
 const courseTickets = new Map();
@@ -111,8 +111,13 @@ app.post("/course-access", (req, res) => {
       expiresAt: Date.now() + 30 * 1000
     });
 
+    // Use relative path so it works on any host (local or Vercel)
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : `http://localhost:${PORT}`;
+
     res.json({
-      launchUrl: `http://localhost:${PORT}/launch-course?ticket=${encodeURIComponent(ticket)}`
+      launchUrl: `${baseUrl}/launch-course?ticket=${encodeURIComponent(ticket)}`
     });
 
   } catch (error) {
@@ -241,8 +246,11 @@ app.get("/", (req, res) => {
 /* =========================
    START SERVER
 ========================= */
-app.listen(PORT, () => {
+// Only call app.listen in local development (not needed for Vercel serverless)
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Government site running on http://localhost:${PORT}`);
+  });
+}
 
-  console.log(`Government site running on http://localhost:${PORT}`);
-
-});
+module.exports = app;
