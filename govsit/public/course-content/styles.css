@@ -1,0 +1,70 @@
+/* ===============================
+   GLOBAL
+=================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+/* ===============================
+   NAVBAR
+=================================*/
+
+.navbar{
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Brand = BLUE */
+.navbar-brand{
+    font-weight: 700;
+    font-size: 20px;
+    color: #0d6efd !important;
+}
+
+/* Menu = BLACK */
+.nav-link{
+    font-weight: 500;
+    margin-left: 20px;
+    color: #000 !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active{
+    color: #0d6efd !important;
+}
+
+/* ===============================
+   MOBILE MENU BUTTON FIX
+=================================*/
+
+/* Remove border */
+.navbar-toggler{
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Make icon BLACK */
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+=================================*/
+
+@media(max-width:768px){
+
+    .nav-link{
+        margin-left: 0;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+}
