@@ -166,14 +166,23 @@ async function watchCourse(courseName) {
     const data = await response.json();
 
     if (!response.ok) {
-
+      // If token expired, redirect to login
+      if (response.status === 401) {
+        localStorage.removeItem("govToken");
+        alert("Session expired. Please login again.");
+        window.location.href = "/login.html";
+        return;
+      }
       alert(data.message || "Unable to open course right now.");
       return;
-
     }
 
     // 🔹 Redirect to secure launch URL
-    window.location.href = data.launchUrl;
+    if (data.launchUrl) {
+      window.location.href = data.launchUrl;
+    } else {
+      alert("Invalid response from server.");
+    }
 
   } catch (error) {
 

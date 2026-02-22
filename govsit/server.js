@@ -56,7 +56,7 @@ app.post("/login", (req, res) => {
       eligibleCourses: user.eligibleCourses
     },
     SECRET,
-    { expiresIn: "10m" }
+    { expiresIn: "24h" } // Extended to 24 hours for better cross-device experience
   );
 
   res.json({
@@ -93,19 +93,19 @@ app.post("/course-access", (req, res) => {
       return res.status(403).json({ message: "Course not allowed" });
     }
 
-    // Create short ticket
+    // Create ticket (5 minutes expiry for better reliability across devices)
     const ticket = jwt.sign(
       {
         userId: payload.id,
         courseName
       },
       SECRET,
-      { expiresIn: "30s" }
+      { expiresIn: "5m" }
     );
 
     courseTickets.set(ticket, {
       used: false,
-      expiresAt: Date.now() + 30 * 1000
+      expiresAt: Date.now() + 5 * 60 * 1000 // 5 minutes
     });
 
     // Use request host on Vercel so redirect works on your deployed URL
