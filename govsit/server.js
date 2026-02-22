@@ -8,12 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// 🔥 Serve frontend files
+// 🔥 Serve frontend files (includes public/course-content/*.html for course iframe)
 app.use(express.static(path.join(__dirname, "public")));
-
-// 🔥 Serve course HTML from same app (so iframe works on Vercel without localhost)
-const courseContentPath = path.join(__dirname, "..", "couressit");
-app.use("/course-content", express.static(courseContentPath));
 
 const PORT = process.env.PORT || 4000;
 const SECRET = process.env.JWT_SECRET || "gov-secret-key";
