@@ -11,11 +11,12 @@ app.use(cors());
 // 🔥 Serve frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
+// 🔥 Serve course HTML from same app (so iframe works on Vercel without localhost)
+const courseContentPath = path.join(__dirname, "..", "couressit");
+app.use("/course-content", express.static(courseContentPath));
+
 const PORT = process.env.PORT || 4000;
 const SECRET = process.env.JWT_SECRET || "gov-secret-key";
-
-// 🔹 Base URL of course website (set COURSE_SITE_BASE in Vercel env if you host courses elsewhere)
-const COURSE_SITE_BASE = process.env.COURSE_SITE_BASE || "http://127.0.0.1:5501/couressit";
 
 // Short-lived one-time tickets used to open the course site.
 const courseTickets = new Map();
@@ -186,9 +187,13 @@ app.get("/launch-course", (req, res) => {
   // Select page
   const courseFile = coursePages[courseName] || "index.html";
 
-  // Build final URL
-  const courseUrl = `${COURSE_SITE_BASE}/${courseFile}`;
-
+  // Build course URL from same origin (works on Vercel; no localhost)
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : (req.headers["x-forwarded-proto"] && req.headers["x-forwarded-host"]
+        ? `${req.headers["x-forwarded-proto"]}://${req.headers["x-forwarded-host"]}`
+        : `http://localhost:${PORT}`);
+  const courseUrl = `${baseUrl}/course-content/${courseFile}`;
   const safeCourseUrl = courseUrl.replace(/"/g, "&quot;");
 
 

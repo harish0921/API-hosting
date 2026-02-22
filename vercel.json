@@ -5,7 +5,7 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "govsit/public/**"
+        "includeFiles": ["govsit/public/**", "couressit/**"]
       }
     }
   ],
